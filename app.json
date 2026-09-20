@@ -1,0 +1,17 @@
+{
+  "expo": {
+    "name": "PAZAR",
+    "slug": "pazar-yeri",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "android": {
+      "package": "com.fiko933507.pazaryeri",
+      "versionCode": 1
+    },
+    "ios": {
+      "bundleIdentifier": "com.fiko933507.pazaryeri",
+      "buildNumber": "1"
+    }
+  }
+}
