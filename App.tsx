@@ -23,7 +23,7 @@ export default function App() {
 const styles = StyleSheet.create({
   root: { flex: 1 },
   launcher: {
-    position: 'absolute', right: 14, bottom: 88, height: 48, borderRadius: 24,
+    position: 'absolute', left: 14, bottom: 88, height: 46, borderRadius: 23,
     backgroundColor: '#123FBB', paddingHorizontal: 16, flexDirection: 'row',
     alignItems: 'center', gap: 7, borderWidth: 3, borderColor: 'white',
     shadowColor: '#102044', shadowOpacity: 0.22, shadowRadius: 8, elevation: 7,
