@@ -4,7 +4,6 @@ import {
   Image,
   Modal,
   Pressable,
-  SafeAreaView,
   ScrollView,
   StatusBar,
   StyleSheet,
@@ -12,6 +11,7 @@ import {
   TextInput,
   View,
 } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
 
@@ -83,7 +83,7 @@ function EmptyScreen({ tab, favorites, openProduct, onOpenHub }: { tab:string; f
   return <View style={s.empty}><View style={s.emptyIcon}><Ionicons name={icon as never} size={48} color={C.blue}/></View><Text style={s.pageTitle}>{tab}</Text><Text style={s.pageText}>{tab==='Keşfet'?'Yeni üreticiler ve eşsiz ürünler yakında burada.':tab==='Mesajlar'?'Üreticilerle konuşmaların burada görünecek.':tab==='Hesabım'?'Siparişlerini ve mağazanı buradan yönetebilirsin.':'Henüz favori ürünün yok.'}</Text></View>;
 }
 
-export default function App({onOpenHub}:{onOpenHub:()=>void}) {
+export default function App({onOpenHub,onOpenPayment}:{onOpenHub:()=>void;onOpenPayment:()=>void}) {
   const [tab,setTab]=useState('Ana Sayfa'); const [selected,setSelected]=useState<Product|null>(null); const [favorites,setFavorites]=useState<number[]>([]); const [cart,setCart]=useState(0); const [cartOpen,setCartOpen]=useState(false);
   const toggleFavorite=(id:number)=>setFavorites(x=>x.includes(id)?x.filter(v=>v!==id):[...x,id]);
   return <SafeAreaView style={s.safe}><StatusBar barStyle="dark-content" backgroundColor={C.cream}/><View style={s.app}>
@@ -91,7 +91,7 @@ export default function App({onOpenHub}:{onOpenHub:()=>void}) {
     <View style={s.bottom}>{tabs.map(([icon,label])=><Pressable key={label} onPress={()=>setTab(label)} style={s.tab}><View><Ionicons name={(tab===label&&icon==='home'?'home':tab===label&&icon==='heart'?'heart':icon) as never} size={23} color={tab===label?C.blue:'#687086'}/>{label==='Favoriler'&&favorites.length>0?<View style={s.counter}><Text style={s.counterText}>{favorites.length}</Text></View>:null}</View><Text style={[s.tabText,tab===label&&s.tabActive]}>{label}</Text></Pressable>)}</View>
     <Modal visible={!!selected} animationType="slide" transparent onRequestClose={()=>setSelected(null)}>{selected?<View style={s.modalShade}><View style={s.sheet}><Pressable style={s.close} onPress={()=>setSelected(null)}><Ionicons name="close" size={24} color={C.ink}/></Pressable><Image source={{uri:selected.image}} style={s.detailImage}/><View style={s.detailBody}><View style={s.detailTop}><View style={{flex:1}}><Text style={s.detailTitle}>{selected.title}</Text><Text style={s.detailMaker}>{selected.maker} · Ev üreticisi</Text></View><Pressable onPress={()=>toggleFavorite(selected.id)}><Ionicons name={favorites.includes(selected.id)?'heart':'heart-outline'} size={27} color={C.orange}/></Pressable></View><Text style={s.detailPrice}>₺{selected.price}</Text><Text style={s.detailDesc}>{selected.description}</Text><View style={s.trustRow}><View style={s.trust}><Ionicons name="hand-left-outline" size={20} color={C.blue}/><Text style={s.trustText}>El yapımı</Text></View><View style={s.trust}><Ionicons name="shield-checkmark-outline" size={20} color={C.blue}/><Text style={s.trustText}>Doğrulanmış üretici</Text></View></View><Pressable style={s.cartButton} onPress={()=>{setCart(v=>v+1);setSelected(null);Alert.alert('Sepete eklendi',`${selected.title} sepetine eklendi.`)}}><Text style={s.cartText}>Sepete ekle · ₺{selected.price}</Text></Pressable></View></View></View>:null}</Modal>
     {cart>0?<Pressable style={s.cartBubble} onPress={()=>setCartOpen(true)}><Ionicons name="bag-handle" size={20} color="white"/><Text style={s.cartCount}>{cart}</Text></Pressable>:null}
-    <Modal visible={cartOpen} animationType="slide" transparent onRequestClose={()=>setCartOpen(false)}><View style={s.modalShade}><View style={s.cartSheet}><View style={s.cartSheetHead}><View><Text style={s.cartSheetTitle}>Sepetim</Text><Text style={s.cartSheetSub}>{cart} ürün · Güvenli ödeme</Text></View><Pressable style={s.closeInline} onPress={()=>setCartOpen(false)}><Ionicons name="close" size={23} color={C.ink}/></Pressable></View><View style={s.cartItem}><Image source={{uri:products[0].image}} style={s.cartItemImage}/><View style={{flex:1}}><Text style={s.cartItemTitle}>Dalga Seramik Kase</Text><Text style={s.cartItemMaker}>Toprak İzleri · Ev üreticisi</Text><Text style={s.cartItemPrice}>₺390 × {cart}</Text></View></View><View style={s.cartTotal}><Text style={s.cartTotalLabel}>Toplam</Text><Text style={s.cartTotalValue}>₺{390*cart}</Text></View><Pressable style={s.cartButton} onPress={()=>{setCartOpen(false);Alert.alert('Ödeme yöntemleri','Ödeme yöntemlerini PAZAR+ içinden inceleyebilirsin.')}}><Text style={s.cartText}>Ödeme yöntemlerine geç</Text></Pressable></View></View></Modal>
+    <Modal visible={cartOpen} animationType="slide" transparent onRequestClose={()=>setCartOpen(false)}><View style={s.modalShade}><View style={s.cartSheet}><View style={s.cartSheetHead}><View><Text style={s.cartSheetTitle}>Sepetim</Text><Text style={s.cartSheetSub}>{cart} ürün · Güvenli ödeme</Text></View><Pressable style={s.closeInline} onPress={()=>setCartOpen(false)}><Ionicons name="close" size={23} color={C.ink}/></Pressable></View><View style={s.cartItem}><Image source={{uri:products[0].image}} style={s.cartItemImage}/><View style={{flex:1}}><Text style={s.cartItemTitle}>Dalga Seramik Kase</Text><Text style={s.cartItemMaker}>Toprak İzleri · Ev üreticisi</Text><Text style={s.cartItemPrice}>₺390 × {cart}</Text></View></View><View style={s.cartTotal}><Text style={s.cartTotalLabel}>Toplam</Text><Text style={s.cartTotalValue}>₺{390*cart}</Text></View><Pressable style={s.cartButton} onPress={()=>{setCartOpen(false);onOpenPayment()}}><Text style={s.cartText}>Ödeme yöntemlerine geç</Text></Pressable></View></View></Modal>
   </View></SafeAreaView>;
 }
 
