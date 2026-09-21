@@ -16,6 +16,12 @@
     "ios": {
       "bundleIdentifier": "com.fiko933507.pazaryeri",
       "buildNumber": "1"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "81eb8086-a5ed-4d3e-9bf6-fdc4d7a380c7"
+      }
+    },
+    "owner": "fiko93"
   }
 }
