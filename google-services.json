@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "800380102925",
+    "project_id": "pazar-yeri-a84ee",
+    "storage_bucket": "pazar-yeri-a84ee.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:800380102925:android:7f1a5de51fd096fa202844",
+        "android_client_info": {
+          "package_name": "com.fiko933507.pazaryeri"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCuwmhbdko4PwRgbPnponjcHxv0WiKlmYc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
