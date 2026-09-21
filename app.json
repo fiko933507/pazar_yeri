@@ -7,7 +7,8 @@
     "userInterfaceStyle": "light",
     "android": {
       "package": "com.fiko933507.pazaryeri",
-      "versionCode": 1
+      "versionCode": 1,
+      "googleServicesFile": "./google-services.json"
     },
     "ios": {
       "bundleIdentifier": "com.fiko933507.pazaryeri",
