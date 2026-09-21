@@ -22,6 +22,14 @@
           }
         },
         {
+          "client_id": "800380102925-806lccd2e9260eknrvc8poqrfe4ed74e.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.fiko933507.pazaryeri",
+            "certificate_hash": "99578a2a8e5cd75a3aafcace39c27ebcdd5233dc"
+          }
+        },
+        {
           "client_id": "800380102925-gpnoa3csqo0p27hml2sv70rghlsb5k31.apps.googleusercontent.com",
           "client_type": 3
         }
