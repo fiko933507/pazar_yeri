@@ -12,7 +12,20 @@
           "package_name": "com.fiko933507.pazaryeri"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "800380102925-3tm1ijhonll61qv8umsapkt02ml0ifpd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.fiko933507.pazaryeri",
+            "certificate_hash": "ae69d46d6cdcb768fdd8a9ca44071e70c5909fd7"
+          }
+        },
+        {
+          "client_id": "800380102925-gpnoa3csqo0p27hml2sv70rghlsb5k31.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyCuwmhbdko4PwRgbPnponjcHxv0WiKlmYc"
@@ -20,7 +33,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "800380102925-gpnoa3csqo0p27hml2sv70rghlsb5k31.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }
